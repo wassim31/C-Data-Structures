@@ -12,6 +12,7 @@ int main(int argc, char const *argv[])
         insert_end(&head,x);
     }
     print(head);
+    deallocate(&head);
     return 0;
 }
 void insert_end(node **root, int x)
@@ -40,4 +41,14 @@ void print(node *ptr1)
         printf("%d ", ptr->value);
     }
     printf("\n");
+}
+void deallocate(node **root)
+{
+    for(node *curr = *root; curr->next != NULL ; )
+    {
+        node *aux = curr;
+        curr = curr->next;
+        free(aux);
+
+    }
 }

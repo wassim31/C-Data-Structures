@@ -8,3 +8,4 @@ struct node
 };
 void print(node *ptr);
 void insert_end(node **root, int x);
+void deallocate(node **root);
