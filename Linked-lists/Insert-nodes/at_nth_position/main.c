@@ -13,22 +13,22 @@ int main(int argc, char const *argv[])
 
 void nth_insert(node **root , int value, int n)
 {
-    node *temp1 = malloc(sizeof(node));
-    temp1->value = value;
-    temp1->next = NULL;
+    node *actual_node = malloc(sizeof(node));
+    actual_node->value = value;
+    actual_node->next = NULL;
     if(n == 1)
     {
-        temp1->next = *root;
-        *root = temp1;
+        actual_node->next = *root;
+        *root = actual_node;
         return;
     }
-    node *temp2 = *root;
+    node *previous_node = *root;
     for(int i = 1 ; i < n-1 ; i++) // first node n = 1
     {
-        temp2 = temp2->next;
+        previous_node  = previous_node->next;
     }
-    temp1->next = temp2->next;
-    temp2->next = temp1;
+    actual_node->next = previous_node ->next;
+    previous_node ->next = actual_node;
 
 }
 
