@@ -16,7 +16,9 @@ int main(int argc, char const *argv[])
         push(&head, x);
     }
     print(head);
-    pop(&head);
+    printf("Poped element : %d\n", pop(&head));
+    deallocate(&head);
+    push(&head, 20);
     print(head);
     return 0;
 }
@@ -40,14 +42,30 @@ void push(node **root, int x)
     temp->next = *root;
     *root = temp;
 }
-void pop(node **root)
+int pop(node **root)
 {
     if(*root == NULL)
     {
         printf("Empty stack\n");
     }
     node *temp = *root;
+    int poped_number = temp->value;
     *root = (*root)->next;
     free(temp);
+    return poped_number;
 
+}
+void deallocate(node **root)
+{
+    if(*root == NULL)
+    {
+        return;
+    }
+    node *temp = NULL;
+    while(*root != NULL)
+    {
+        temp = *root;
+        *root = (*root)->next;
+        free(temp);
+    }
 }

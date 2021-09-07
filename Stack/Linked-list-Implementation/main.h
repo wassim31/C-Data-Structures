@@ -8,4 +8,5 @@ struct node
 };
 void print(node *root);
 void push(node **root, int x);
-void pop(node **root);
+int pop(node **root);
+void deallocate(node **root);
