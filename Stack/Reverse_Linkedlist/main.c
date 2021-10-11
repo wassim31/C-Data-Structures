@@ -1,5 +1,3 @@
-// still buggy 
-
 #include <stdlib.h>
 #include <stdio.h>
 typedef struct node node;
@@ -43,12 +41,14 @@ void print(node *root)
     }
     printf("\n");
 }
-int num_ofelements(node *root)
+int pop(node **root)
 {
-    int i = 0;
-    for(node *curr = root ; curr != NULL ; curr = curr->next, i++);
-    return i;
+    node *temp = *root;
+    int popped_number = temp->value;
+    *root = temp->next;
+    return popped_number;
 }
+
 int main(int argc, char const *argv[])
 {
     node *root = NULL;
@@ -56,17 +56,16 @@ int main(int argc, char const *argv[])
     insert_node(&root, 1);
     insert_node(&root, 2);
     insert_node(&root, 3);
-    node *temp = root;
-    node *test = temp->next;
-    for(int temp2 = temp->value ; temp->next != NULL ; temp = temp->next , temp->value = test->value, test = test->next)
+    // pushing elements into the stack
+    for(node *temp = root ; temp != NULL ; temp = temp->next)
     {
-        push(&stack,temp->value);
+        push(&stack, temp->value);
     }
-    print(stack);
-
-
-
-    //  print(root);
-
+    // Stack == last in , first out ; so we pop again into the linked-list
+    for(node *temp = root ; temp != NULL ; temp = temp->next)
+    {
+        temp->value = pop(&stack);
+    }
+    print(root);
     return 0;
 }
