@@ -74,11 +74,17 @@ int main(int argc, char const *argv[])
     printf("Enter a string : "); // (name : [wassim]) 
     fgets(string,20, stdin);
     node *root = NULL;
-    for(int i = 0 ; i < strlen(string) ; i++)
+    for(int i = 0, test = 0; i < strlen(string) ; i++)
     {
         if(string[i] == '(' || string[i] == '[' || string[i] == '{')
         {
             push(&root,string[i]);
+            test++;
+        }
+        if(test == 0)
+        {
+            printf("Un-balanced\n");
+            return 1;
         }
     }
     
