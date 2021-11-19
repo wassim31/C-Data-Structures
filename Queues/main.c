@@ -1,7 +1,14 @@
-#include <stdlib.h>
-#include <stdio.h>
-#define SIZE 3
-typedef struct q q;
+#include "main.h"
+
+int main(int argc, char const *argv[])
+{
+    q *new_q = create_q(SIZE);
+    enqueue(new_q,1);
+    enqueue(new_q,2);
+    enqueue(new_q,3);
+    print(new_q);
+    return 0;
+}
 struct q
 {
     int rear, front;
@@ -50,13 +57,4 @@ void print(q *main)
         printf("Element %d : %d\n", i, dequeue(main));
     }
 
-}
-int main(int argc, char const *argv[])
-{
-    q *new_q = create_q(SIZE);
-    enqueue(new_q,1);
-    enqueue(new_q,2);
-    enqueue(new_q,3);
-    print(new_q);
-    return 0;
 }
