@@ -6,4 +6,4 @@ typedef struct q q;
 void print(q *main);
 int dequeue(q *main);
 void enqueue(q *main, int value);
-void *create_q(unsigned size);
+q *create_q(unsigned size);

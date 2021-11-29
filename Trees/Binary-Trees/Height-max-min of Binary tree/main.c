@@ -5,6 +5,9 @@ typedef struct node node;
 int find_max(node *root);
 int find_min(node *root);
 node* newNode(node *root, int data);
+int height(node *root);
+int height(node *root);
+
 struct node{
     int value;
     node *left;
@@ -21,7 +24,7 @@ int main(int argc, char const *argv[])
     root->left->right->right = newNode(root,110);
     root->right->right = newNode(root,9);
     root->right->right->left = newNode(root,4);
-    printf("min : %d\nmax : %d\n", find_min(root),find_max(root));
+    printf("min : %d\nmax : %d\nheigh : %d\n", find_min(root),find_max(root),height(root));
 
     return 0;
 }
@@ -58,5 +61,22 @@ int find_max(node *root)
     if(right_max > max)
         max = right_max;
     return max;
+
+}
+int max(int a,int b)
+{
+    if(a > b)
+        return a;
+    else
+        return b;
+}
+
+int height(node *root)
+{
+    if(root == NULL)
+        return 0;
+    int left_height = height(root->left);
+    int right_height = height(root->right);
+    return max(left_height,right_height) + 1;
 
 }

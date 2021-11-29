@@ -15,13 +15,14 @@ struct q
     unsigned size;
     int *array;
 };
-void *create_q(unsigned size)
+q *create_q(unsigned size)
 {
     q *new_q = malloc(sizeof(q));
     new_q->front = -1;
     new_q->rear = -1;
     new_q->size = size;
     new_q->array = malloc(sizeof(int) * size);
+    return new_q;
 }
 void enqueue(q *main, int value)
 {
